@@ -3,6 +3,7 @@ package BOJ.Bronze;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class B3040_백설공주와일곱난쟁이 {
 	private static int[] dwarf;
@@ -17,7 +18,6 @@ public class B3040_백설공주와일곱난쟁이 {
 		}
 		numbers = new int[7];
 		combination(0, 0);
-		System.out.println(sb);
 	}
 	
 	private static void combination(int cnt, int start) {
@@ -28,9 +28,12 @@ public class B3040_백설공주와일곱난쟁이 {
 			}
 			
 			if (sum == 100) {
+				Arrays.sort(numbers);
 				for (int i=0;i<7;i++) {
 					sb.append(numbers[i]+"\n");
 				}
+				System.out.println(sb);
+				System.exit(0);
 			}
 			return;
 		}
