@@ -5,13 +5,20 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Stack;
 
+/*
+ * < 스택 문제 >
+ * 
+ * 입력 받는 값을 하나씩 스택에 넣다가 닫히는 괄호 발견 시 값을 계산한다.
+ * 입력이 끝날 때까지 반복하여 최종 값을 도출해낸다.
+ */
 public class B2504_괄호의값 {
 	private static Stack<String> stack;
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String par = br.readLine();
 		stack = new Stack<>();
-		for (int i=0;i<par.length()+1;i++) {
+		stack.push(par.charAt(0)+"");
+		for (int i=1;i<par.length()+1;i++) {
 			if (check()) {
 				int num = Integer.parseInt(stack.pop());
 				if (check()) {
@@ -21,6 +28,7 @@ public class B2504_괄호의값 {
 				else stack.push(num+"");
 			}
 			if (i == par.length()) break;
+			
 			char cur = par.charAt(i);
 			if (cur == '(' || cur == '[') stack.push(cur+"");
 			else if (!stack.isEmpty() && (cur == ')' || cur == ']')) {
